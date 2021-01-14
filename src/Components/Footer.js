@@ -11,7 +11,7 @@ class Footer extends Component {
                     <NavLink to="/completed" className="btn btn-outline-dark bg-light"><FaCheckSquare/></NavLink>
                     <NavLink to="/add-task" className="btn btn-outline-dark bg-light"><FaPlusSquare/></NavLink>
                 </div>
-                <button className="btn btn-outline-dark bg-light"><FaTrash/></button>
+                <button className="btn btn-outline-dark bg-light" onClick={this.props.onDeleteCompleted}><FaTrash/></button>
             </footer>
         )
     }

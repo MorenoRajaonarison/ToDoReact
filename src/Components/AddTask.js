@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 
 class AddTask extends Component{
+    handleSubmit = e => {
+        e.preventDefault()
+        this.props.onAddTask(this.newTask.value)
+        this.props.history.push('/')
+    }
     render() {
         return (
             <section>
