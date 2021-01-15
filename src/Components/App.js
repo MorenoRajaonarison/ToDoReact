@@ -4,10 +4,12 @@ import Footer from './Footer'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import AddTask from './AddTask'
 import initialData from '../initialData'
+import Fetching from './Fetching'
 
 class App extends Component {
     state = {
-        tasks: initialData
+        tasks: [],
+        fetching: true
     }
 
     onToggleCompleted = (taskId) => {
@@ -40,9 +42,21 @@ class App extends Component {
         })
     }
 
+    componentDidMount = () => {
+        let delay = Math.floor(Math.random()*5000)
+        setTimeout(() => {
+            this.setState({
+                fetching: false,
+                tasks: initialData
+            })
+        }, delay);
+    }
+
+
     render() {
         return (
             <section id="todo">
+                {this.state.fetching?<Fetching/>:null}
                 <BrowserRouter>
                     <Switch>
                         <Route path='/add-task' render={props => <AddTask {...props} onAddTask={this.onAddTask}/>} />
